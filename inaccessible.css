@@ -1,0 +1,264 @@
+/* Global styles with poor accessibility */
+body {
+    /* Fixed width that doesn't adjust for screen size */
+    width: 1200px;
+    margin: 0 auto;
+    /* Extremely small font size */
+    font-size: 9px;
+    /* Poor contrast text color */
+    color: #cccccc;
+    background-color: #f8f8f8;
+    /* Non-standard font that might not be available */
+    font-family: 'Custom Font', sans-serif;
+    /* Tight line height making text hard to read */
+    line-height: 1;
+}
+
+/* Remove focus outlines from all elements */
+*:focus {
+    outline: none !important;
+}
+
+/* Header styling with non-semantic elements */
+.header {
+    background-color: #333333;
+    padding: 10px;
+    /* Fixed height that may clip content */
+    height: 60px;
+    /* Using position absolute to break natural document flow */
+    position: relative;
+}
+
+.site-title {
+    /* Styled to look like heading but isn't one */
+    font-size: 24px;
+    font-weight: bold;
+    color: #777777;
+    /* Poor contrast against #333333 background */
+    text-transform: uppercase;
+    /* Text shadow making it harder to read */
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.nav {
+    /* Position that can overlap with other content */
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
+.nav-item {
+    /* Small click/tap target */
+    padding: 3px;
+    margin-left: 5px;
+    /* Low contrast against dark background */
+    color: #555555;
+    cursor: pointer;
+    /* No visual indication of interactivity */
+}
+
+/* Content area styling */
+.content {
+    padding: 5px;
+    /* Using px instead of relative units */
+    width: 1180px;
+    /* Low contrast background */
+    background-color: #eeeeee;
+}
+
+.blog-post {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fafafa;
+    /* Fixed height may cut off content */
+    height: 600px;
+    overflow: hidden;
+}
+
+.post-title {
+    /* Styling p tag to look like heading */
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    /* Low contrast */
+    color: #aaaaaa;
+}
+
+.date {
+    /* Tiny font size for important information */
+    font-size: 7px;
+    color: #bbbbbb;
+    /* Absolute positioning that may cause overlap */
+    position: absolute;
+    right: 15px;
+}
+
+.post-content {
+    margin-top: 10px;
+    /* Poor line height for readability */
+    line-height: 0.9;
+}
+
+img {
+    /* No max-width, will overflow on small screens */
+    width: 1000px;
+    height: 300px;
+}
+
+.sub-heading {
+    /* Styled to look like heading but isn't one */
+    font-weight: bold;
+    font-size: 14px;
+    margin: 15px 0 5px;
+    /* Poor contrast */
+    color: #999999;
+}
+
+.list {
+    margin: 10px 0;
+}
+
+.list-item {
+    margin-bottom: 3px;
+    /* No proper list semantics */
+}
+
+.quote {
+    /* Styling without semantic element */
+    font-style: italic;
+    padding: 5px;
+    border-left: 2px solid #dddddd;
+    margin: 10px 0;
+}
+
+/* Blinking animation that can cause seizures */
+.flashing-element {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: yellow;
+    text-align: center;
+    margin: 15px 0;
+    animation: flash 0.5s linear infinite alternate;
+}
+
+@keyframes flash {
+    0% { opacity: 1; background-color: yellow; }
+    100% { opacity: 0.3; background-color: red; }
+}
+
+.read-more {
+    /* Tiny click target */
+    font-size: 8px;
+    color: blue;
+    /* No underline to indicate it's a link */
+    text-decoration: none;
+    cursor: pointer;
+    /* Small hit area */
+    display: inline-block;
+    padding: 2px;
+}
+
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination img {
+    /* Small touch targets */
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.pagination span {
+    margin: 0 10px;
+}
+
+/* Form styling with poor accessibility */
+.subscription {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #dddddd;
+}
+
+.form-title {
+    /* Not a real heading */
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-row {
+    margin-bottom: 5px;
+}
+
+input {
+    /* Fixed width input */
+    width: 200px;
+    /* No focus state */
+    border: 1px solid #cccccc;
+    padding: 3px;
+    /* Tiny font */
+    font-size: 8px;
+}
+
+.submit-btn {
+    /* Div styled like button */
+    background-color: #555555;
+    color: #999999;
+    /* Low contrast text */
+    padding: 5px 10px;
+    display: inline-block;
+    cursor: pointer;
+    /* Small touch target */
+    font-size: 10px;
+    /* No visual feedback on hover/focus */
+    text-align: center;
+    width: 70px;
+}
+
+/* Footer styling */
+.footer {
+    padding: 10px;
+    background-color: #333333;
+    color: #555555;
+    /* Low contrast */
+    font-size: 8px;
+    text-align: center;
+}
+
+.footer-links span {
+    cursor: pointer;
+    /* No visual indication it's clickable */
+    color: #666666;
+    /* Poor contrast against #333333 */
+}
+
+.copyright {
+    margin-top: 5px;
+    font-size: 7px;
+}
+
+/* Prevent text selection */
+* {
+    user-select: none;
+}
+
+/* Print styling that hides content */
+@media print {
+    body {
+        display: none;
+    }
+}
+
+/* Non-responsive design - hide content on small screens */
+@media (max-width: 1200px) {
+    body {
+        overflow: hidden;
+    }
+    .content {
+        display: none;
+    }
+}
