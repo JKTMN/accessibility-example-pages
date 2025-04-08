@@ -1,0 +1,423 @@
+/* Base styles with accessibility in mind */
+:root {
+    /* Define color variables for consistent use throughout the site */
+    --color-text: #333333; /* Dark gray for main text - good contrast */
+    --color-background: #ffffff; /* White background */
+    --color-primary: #2b5797; /* Primary blue color */
+    --color-accent: #d04a02; /* Orange accent color with sufficient contrast */
+    --color-light-bg: #f5f5f5; /* Light gray background */
+    --color-border: #cccccc; /* Medium gray for borders */
+    --color-focus: #0066cc; /* Bright blue for focus indicators */
+}
+
+/* Reset with accessibility considerations */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base HTML styles */
+html {
+    /* Base font size allows for user zoom and relative sizing */
+    font-size: 100%;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+body {
+    /* Use system fonts for best performance and user preference compatibility */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    line-height: 1.5; /* Improved readability */
+    color: var(--color-text);
+    background-color: var(--color-background);
+    /* Add padding to prevent content from touching the edge of the viewport */
+    padding: 0;
+    /* Maximum line length for readability */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+    /* Position absolutely so it doesn't affect layout */
+    position: absolute;
+    /* Place it off-screen initially */
+    left: -9999px;
+    top: 0;
+    /* When focused, bring it into view */
+    z-index: 100;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    /* Make it clear when it's focused */
+    transition: transform 0.3s;
+}
+
+.skip-link:focus {
+    /* Move into view when focused */
+    left: 0;
+}
+
+/* Visually hidden class for screen reader text */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Header styles */
+header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 1rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Navigation styles */
+nav {
+    margin-bottom: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    display: inline-block;
+    /* Clear hover/focus styles */
+    border-bottom: 2px solid transparent;
+}
+
+nav a:hover,
+nav a:focus {
+    border-bottom: 2px solid white;
+    outline: none; /* Remove default outline and use custom styles */
+}
+
+/* Current page indicator */
+[aria-current="page"] {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+    display: none; /* Hidden by default, shown on mobile */
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Main content area */
+main {
+    padding: 1rem;
+}
+
+/* Article styles */
+article {
+    margin-bottom: 2rem;
+}
+
+article header {
+    background-color: transparent;
+    color: var(--color-text);
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+article h2 {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.meta {
+    color: #666666; /* Still meets contrast requirements */
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Image styles */
+figure {
+    margin: 2rem 0;
+}
+
+img {
+    max-width: 100%; /* Ensure images don't overflow container */
+    height: auto; /* Maintain aspect ratio */
+    /* Add border for images that may have poor contrast with the background */
+    border: 1px solid var(--color-border);
+}
+
+figcaption {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: #555555; /* Meets contrast requirements */
+}
+
+/* Typography */
+h3 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+    color: var(--color-primary);
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin: 1.2rem 0 0.8rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+ul, ol {
+    margin: 1rem 0 1.5rem 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+blockquote {
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    border-left: 4px solid var(--color-accent);
+    background-color: var(--color-light-bg);
+}
+
+cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Links */
+a {
+    color: var(--color-primary);
+    text-decoration: underline; /* Ensure links are identifiable */
+}
+
+a:hover, a:focus {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+/* Focus styles for all interactive elements */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+/* Tag styling */
+.tags {
+    margin-top: 2rem;
+}
+
+.tag-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-left: 0;
+}
+
+.tag-list li {
+    margin-bottom: 0.5rem;
+}
+
+.tag-list a {
+    background-color: var(--color-light-bg);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    display: inline-block;
+}
+
+.tag-list a:hover,
+.tag-list a:focus {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* Related posts section */
+.related-posts {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+}
+
+/* Footer styles */
+footer {
+    background-color: var(--color-light-bg);
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-content > * {
+    flex: 1;
+    min-width: 250px;
+}
+
+footer h3 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+footer nav ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+address {
+    font-style: normal;
+    line-height: 1.5;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+}
+
+/* Code styling */
+code {
+    background-color: var(--color-light-bg);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    font-size: 0.9em;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    /* Tablet and mobile adjustments */
+    body {
+        font-size: 1rem;
+    }
+    
+    /* Stack navigation for mobile */
+    nav ul {
+        flex-direction: column;
+        display: none; /* Hide by default on mobile */
+    }
+    
+    /* Show when 'visible' class is added */
+    nav ul.visible {
+        display: flex;
+    }
+    
+    /* Show menu toggle on mobile */
+    .menu-toggle {
+        display: block;
+        margin-bottom: 1rem;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    article h2 {
+        font-size: 1.6rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+/* Very small screens */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 0.95rem;
+    }
+    
+    header, main, footer {
+        padding: 0.8rem;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    article h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Print styles for better printed output */
+@media print {
+    body {
+        font-size: 12pt;
+        line-height: 1.3;
+        background: #fff;
+        color: #000;
+    }
+    
+    nav, .related-posts, .skip-link, .menu-toggle {
+        display: none;
+    }
+    
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+    
+    /* Include URL after links for print */
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.9em;
+    }
+    
+    /* Avoid page breaks inside elements */
+    h2, h3, figure {
+        page-break-after: avoid;
+    }
+    
+    img {
+        max-width: 100% !important;
+    }
+}
