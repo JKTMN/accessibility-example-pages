@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- No language attribute in html tag to prevent screen readers from using correct pronunciation -->
+    <title>My Awesome Blog</title>
+    <!-- No meta viewport tag, making mobile viewing difficult -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Using div instead of semantic header -->
+    <div class="header">
+        <!-- Using styled span instead of h1 -->
+        <span class="site-title">My Awesome Blog</span>
+        <!-- Non-descriptive navigation with no structure -->
+        <div class="nav">
+            <!-- Non-descriptive link text -->
+            <span onclick="navigateTo('index.html')" class="nav-item">Home</span>
+            <span onclick="navigateTo('about.html')" class="nav-item">Click here</span>
+            <span onclick="navigateTo('blog.html')" class="nav-item">More</span>
+            <!-- Link with misleading or unclear purpose -->
+            <span onclick="navigateTo('contact.html')" class="nav-item">Info</span>
+        </div>
+    </div>
+
+    <!-- Using div instead of main -->
+    <div class="content">
+        <!-- Using div instead of article -->
+        <div class="blog-post">
+            <!-- Styling p tag to look like a heading instead of using h2 -->
+            <p class="post-title">My First Blog Post</p>
+            <!-- No indication of publish date for screen readers -->
+            <span class="date">04/08/2025</span>
+            
+            <!-- Image without alt text -->
+            <img src="https://picsum.photos/200/300?random=1" alt="image">
+            
+            <!-- Poor text structure without proper paragraphs -->
+            <div class="post-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at justo in libero convalescent vestibulum.
+                <!-- Line break without semantic structure -->
+                <br><br>
+                <!-- Skip heading levels (h2 to h4) -->
+                <div class="sub-heading">Key Points</div>
+                
+                <!-- Using div instead of ul/li for lists -->
+                <div class="list">
+                    <div class="list-item">• First point</div>
+                    <div class="list-item">• Second point</div>
+                    <div class="list-item">• Third point</div>
+                </div>
+                
+                <!-- Non-semantic quote styling -->
+                <div class="quote">
+                    This is a quote that should be in a blockquote element.
+                </div>
+                
+                <!-- Misused ARIA role -->
+                <div role="button">
+                    This is not actually a button and has no keyboard event handlers
+                </div>
+                
+                <!-- Flash animation that could cause seizures -->
+                <div class="flashing-element">
+                    SPECIAL OFFER!!!
+                </div>
+            </div>
+            
+            <!-- Non-descriptive link with no keyboard access -->
+            <div class="read-more" onclick="readMore()">
+                Read more...
+            </div>
+        </div>
+        
+        <!-- Pagination without proper structure -->
+        <div class="pagination">
+            <!-- Images used as buttons without alt text -->
+            <img src="https://picsum.photos/200/300?random=2" onclick="prevPage()">
+            <span>1</span>
+            <img src="https://picsum.photos/200/300?random=3" onclick="nextPage()">
+        </div>
+        
+        <!-- Form with accessibility issues -->
+        <div class="subscription">
+            <!-- Form elements without labels -->
+            <p class="form-title">Subscribe to our newsletter</p>
+            <div class="form-row">
+                <input type="text" placeholder="Name">
+            </div>
+            <div class="form-row">
+                <input type="text" placeholder="Email">
+            </div>
+            <!-- Button implemented as div -->
+            <div class="submit-btn" onclick="subscribe()">SUBMIT</div>
+        </div>
+    </div>
+    
+    <!-- Using div instead of footer -->
+    <div class="footer">
+        <!-- Poor link structure -->
+        <div class="footer-links">
+            <span onclick="navigateTo('privacy.html')">Privacy</span> |
+            <span onclick="navigateTo('terms.html')">Terms</span> |
+            <span onclick="navigateTo('contact.html')">Contact</span>
+        </div>
+        <div class="copyright">
+            <!-- Using entity references inconsistently -->
+            Copyright &copy; 2025 - My Awesome Blog
+        </div>
+    </div>
+    
+    <script>
+        // JavaScript that overrides default behavior
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+        
+        function readMore() {
+            alert("You clicked read more!");
+        }
+        
+        function prevPage() {
+            alert("Previous page");
+        }
+        
+        function nextPage() {
+            alert("Next page");
+        }
+        
+        function subscribe() {
+            alert("Subscribed!");
+        }
+        
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+        // Disable keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
