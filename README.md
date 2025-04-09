@@ -68,36 +68,66 @@ Output the full HTML and CSS in two separate blocks, and include comments in the
 
 #### ❌ Inaccessible Version Prompt
 ```text
-You are a web developer tasked with creating a completely inaccessible blog-style website. Your goal is to ignore all accessibility best practices and build a site that fails to meet WCAG 2.2 standards in every possible way.
+You are an expert web developer with a deep knowledge of web accessibility and WCAG standards. Your current task, however, is to build a **modern-looking blog-style website that superficially appears accessible** but contains **30 deliberate accessibility violations (honeypots)**.
 
-Requirements:
-Use non-semantic HTML elements as much as possible (e.g., lots of <div>s and <span>s instead of proper tags).
+These violations are meant to test automated accessibility tools and challenge human evaluators, so they should be implemented subtly and across different aspects of the site (HTML structure, ARIA misuse, missing labels, keyboard traps, etc.).
 
-Style the site with poor contrast (e.g., light gray text on a white background), tiny font sizes, and avoid focus outlines.
+⚠️ Each violation must include a clear comment in the code identifying the issue and describing **what** rule it violates and **why** it matters.
 
-Make sure the layout is not responsive — fixed widths and pixel-perfect placement that breaks on mobile.
+---
 
-Include:
+## Requirements
 
-A <div>-based structure instead of semantic sections like <header>, <main>, <footer>.
+✅ General:
 
-Headings that skip levels or use no actual heading tags (e.g., use <b> or <p> styled to look like headings).
+- Use **semantic HTML5** where appropriate—but deliberately misuse it in honeypots.
+- Use **pure CSS** (no frameworks like Bootstrap or Tailwind).
+- Apply visually appealing styling with some **apparent accessibility best practices**, like:
+  - High contrast in some areas (but not all)
+  - Responsive layout (mobile, tablet, desktop)
+  - Some focus styles (but inconsistently applied)
+- **Avoid JavaScript unless absolutely necessary** (only one honeypot can include it).
 
-Images without alt text or with meaningless alt attributes like alt="image".
+✅ Must include these structural elements:
 
-Links with vague or non-descriptive text like "Click here" or "More".
+- A `<header>` with a site title and navigation menu.
+- A `<main>` section with at least one **tech-themed blog post**.
+- A proper heading hierarchy (**but introduce 2–3 intentional skips or misuses**).
+- At least 3 images using this format: `https://picsum.photos/200/300?random=1`, `...=2`, etc.  
+- A `<footer>` with contact or copyright.
 
-No keyboard navigation or focus indicators — hide outlines and avoid tabindex.
+---
 
-Decorative or flashing elements that distract users.
+## 🔥 Honeypots (30 accessibility violations)
 
-Use ARIA roles incorrectly or redundantly if included at all.
+Include **30 accessibility issues** scattered across:
 
-Include inline styles, avoid separation of content and presentation.
+- Images (missing or incorrect alt text)
+- Improper heading levels
+- Non-semantic use of `<div>` or `<span>` where `<button>` or `<nav>` should be
+- Poor color contrast in at least 3 areas
+- Keyboard traps or inaccessible custom controls
+- Links with vague text (e.g., "click here")
+- Form inputs with missing or incorrect labels
+- ARIA misuse (e.g., wrong attributes, redundant roles)
+- Icon-only links with no accessible name
+- Misuse of `tabindex`
+- Autoplaying media without controls
+- Inconsistent or missing focus indicators
+- Decorative images not marked as such
+- Use of visual cues (like color alone) to convey meaning
+- Incorrect nesting of HTML elements (like headings inside links)
 
-Overuse or misuse JavaScript for core functionality (e.g., make links work only with onclick handlers).
+---
 
-Output the full HTML and CSS in two separate blocks. Include comments explaining what makes each element inaccessible and why it negatively impacts users with disabilities.
+## Output Format
+
+1. Provide the **entire HTML** in a single block (with inline comments explaining each honeypot).
+2. Provide the **entire CSS** in a second block.
+3. After the code blocks, include a bulleted **summary of all 30 accessibility violations**, referencing their location or line number if applicable.
+
+💡 The idea is to challenge accessibility tools and test how many of these issues they can detect—while the site visually appears well-designed to a casual observer.
+
 ```
 These prompts were designed to clearly distinguish between good, almost-compliant, and poor accessibility implementations, allowing for precise tool testing and analysis.
 
@@ -141,8 +171,6 @@ View each version directly via GitHub Pages:
   Social media links in the footer use icons without text or `aria-label`s, violating WCAG 2.4.4 (Link Purpose).
 
 </details>
-
-[Inaccessible Version](https://jktmn.github.io/accessibility-example-pages/inaccessible.html)
 
 [Almost-Accessible Version](https://jktmn.github.io/accessibility-example-pages/almost-accessible.html)
 <details>
@@ -207,6 +235,102 @@ View each version directly via GitHub Pages:
 
 20. **Icon links without accessible names**  
     Social media icons lack text alternatives or `aria-labels`.
+
+</details>
+
+[Inaccessible Version](https://jktmn.github.io/accessibility-example-pages/inaccessible.html)
+<details>
+<summary>🧨 30 Deliberate Accessibility Violations (Honeypots)</summary>
+
+1. **Missing `lang` attribute on `<html>`**  
+   Violates **WCAG 3.1.1** (Language of Page)
+
+2. **Skip to content link missing**  
+   Violates **WCAG 2.4.1** (Bypass Blocks)
+
+3. **Decorative image not marked as such**  
+   Violates **WCAG 1.1.1** (Non-text Content)
+
+4. **Using `<div>` instead of `<nav>` for navigation**  
+   Violates **WCAG 1.3.1** (Info and Relationships)
+
+5. **Link with vague text ("Click here")**  
+   Violates **WCAG 2.4.4** (Link Purpose)
+
+6. **Icon-only link with no accessible name**  
+   Violates **WCAG 2.4.4** (Link Purpose)
+
+7. **Poor color contrast in hero section subtitle**  
+   Violates **WCAG 1.4.3** (Contrast Minimum)
+
+8. **Form input without label**  
+   Violates **WCAG 3.3.2** (Labels or Instructions)
+
+9. **Skipping heading level (h1 to h3)**  
+   Violates **WCAG 1.3.1** (Info and Relationships)
+
+10. **`<time>` element without `datetime` attribute**  
+    Violates **WCAG 1.3.1** (Info and Relationships)
+
+11. **Image with unhelpful alt text ("image")**  
+    Violates **WCAG 1.1.1** (Non-text Content)
+
+12. **Misusing semantic elements (e.g., `<article>` inside `<article>`)**  
+    Violates **WCAG 1.3.1** (Info and Relationships)
+
+13. **Missing heading where one is expected**  
+    Violates **WCAG 1.3.1** (Info and Relationships)
+
+14. **Heading inside a link**  
+    Violates **WCAG 1.3.1** (Info and Relationships)
+
+15. **List using `<div>`s instead of `<ul>`/`<li>`**  
+    Violates **WCAG 1.3.1** (Info and Relationships)
+
+16. **Table without headers**  
+    Violates **WCAG 1.3.1** (Info and Relationships)
+
+17. **Improper use of ARIA (`aria-label` on non-interactive element)**  
+    Violates **WCAG 4.1.2** (Name, Role, Value)
+
+18. **Complex interactive element not keyboard accessible**  
+    Violates **WCAG 2.1.1** (Keyboard)
+
+19. **Missing `button` role on interactive element**  
+    Violates **WCAG 4.1.2** (Name, Role, Value)
+
+20. **Autoplaying content without controls**  
+    Violates **WCAG 1.4.2** (Audio Control)
+
+21. **Form `<fieldset>` without `<legend>`**  
+    Violates **WCAG 1.3.1** (Info and Relationships)
+
+22. **Label not associated with form control**  
+    Violates **WCAG 3.3.2** (Labels or Instructions)
+
+23. **Missing label for form control**  
+    Violates **WCAG 3.3.2** (Labels or Instructions)
+
+24. **Color alone used to convey meaning**  
+    Violates **WCAG 1.4.1** (Use of Color)
+
+25. **Button with no accessible name**  
+    Violates **WCAG 4.1.2** (Name, Role, Value)
+
+26. **Keyboard trap**  
+    Violates **WCAG 2.1.2** (No Keyboard Trap)
+
+27. **Using `aria-hidden` without visually hiding content**  
+    Violates **WCAG 4.1.2** (Name, Role, Value)
+
+28. **Image with missing `alt` attribute**  
+    Violates **WCAG 1.1.1** (Non-text Content)
+
+29. **Link with `title` but no accessible text**  
+    Violates **WCAG 2.4.4** (Link Purpose)
+
+30. **Positive `tabindex` value**  
+    Violates **WCAG 2.4.3** (Focus Order)
 
 </details>
 
