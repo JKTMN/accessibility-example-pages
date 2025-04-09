@@ -46,26 +46,24 @@ Output the full HTML and CSS in two separate blocks, and include comments in the
 
 #### ⚖️ Almost-Accessible Version Prompt
 ```text
-You are an expert web developer with a strong focus on accessibility and inclusive design. Your task is to build a modern, responsive blog-style website that fully conforms to WCAG 2.2 Level A accessibility standards.
+You are an expert web developer with a strong focus on accessibility and inclusive design. Your task is to build a modern, responsive blog-style website that mostly conforms to WCAG 2.2 Level A standards. However, I would like you to include 20 honey pot components which are inaccessible. You should place a comment within the code where the violation/issue is, you should also list the errors after generating the code.
 Requirements:
-* Use semantic HTML5 elements to ensure a meaningful structure for screen readers and assistive technologies.
-* Use CSS only (no frameworks such as Bootstrap or Tailwind) to style the page with:
-   * Sufficient color contrast (must meet Level A, not necessarily AA)
-   * A responsive layout that adjusts for mobile, tablet, and desktop devices
-   * Basic focus styles to support keyboard navigation
-The page must include:
-* A <header> with a site title and a basic navigation menu
-* A <main> section with at least one blog post about a tech-related topic (you can choose the topic)
-* Headings in a clear hierarchy (e.g. <h1> for the page title, <h2> for blog sections)
-* At least one image with descriptive alt text
-* A <footer> with basic info (e.g. contact or copyright)
-* Clear link text (avoid vague links like "click here")
-* Minimal or no ARIA — only use if truly necessary to support screen reader functionality
-* The site should be keyboard navigable and provide a readable experience for screen readers
-* JavaScript should be avoided unless essential to demonstrate Level A compliance
-Output:
-* Provide the full HTML and CSS in two clearly separated code blocks
-* Include inline comments to explain accessibility-related decisions or trade-offs
+Use semantic HTML5 to ensure proper document structure and assistive technology compatibility.
+Use CSS (no frameworks like Bootstrap or Tailwind) to style the site with:
+High contrast, accessible color choices
+Responsive layout (works on mobile, tablet, desktop)
+Focus styles for keyboard navigation
+Include:
+A <header> with a site title and navigation menu
+A <main> section with at least one tech-related blog post (you can choose the topic)
+Headings structured properly (<h1> to <h3>, etc.)
+Descriptive alt text for all images
+A <footer> with contact or copyright info
+ARIA landmarks and attributes only when necessary (avoid overuse)
+Clear link text (no "click here")
+Ensure the website passes basic accessibility checks (e.g. keyboard navigable, readable by screen readers)
+Avoid using JavaScript unless absolutely necessary
+Output the full HTML and CSS in two separate blocks, and include comments in the code to explain any accessibility decisions. When using images ensure you use this link for src https://picsum.photos/200/300?random=1 incrementing the number after random=1 for each consequent picture.
 ```
 
 #### ❌ Inaccessible Version Prompt
@@ -110,7 +108,7 @@ View each version directly via GitHub Pages:
 
 [Accessible Version](https://jktmn.github.io/accessibility-example-pages/accessible.html)
 <details>
-<summary>❌ Accessibility Issues</summary>
+<summary>❌ 10 Deliberate Accessibility Violations</summary>
 
 - **Missing hamburger menu button label**  
   The mobile menu toggle button has no text or `aria-label`, making it inaccessible to screen reader users who won't know its purpose.
@@ -144,22 +142,73 @@ View each version directly via GitHub Pages:
 
 </details>
 
-<details>
-<summary>✅ Accessibility Best Practices Followed</summary>
-
-- Semantic HTML structure  
-- Proper focus styles for keyboard navigation  
-- Responsive design  
-- Appropriate color contrast (except the intentional violation)  
-- Clear document structure  
-- Alt text for most images  
-- Proper form controls (except the intentional violation)  
-
-</details>
-
 [Inaccessible Version](https://jktmn.github.io/accessibility-example-pages/inaccessible.html)
 
 [Almost-Accessible Version](https://jktmn.github.io/accessibility-example-pages/almost-accessible.html)
+<details>
+<summary>❌ 20 Deliberate Accessibility Violations</summary>
+
+1. **Missing alt text**  
+   The logo image in the header has no `alt` attribute.
+
+2. **No skip navigation link**  
+   Missing "Skip to main content" link for keyboard users.
+
+3. **Navigation not marked as landmark**  
+   Used `<div>` instead of `<nav>` for main navigation.
+
+4. **Non-descriptive link text**  
+   The "Click here" link in the navigation doesn't describe its purpose.
+
+5. **Color alone used to convey information**  
+   Status indicator uses only color to show status.
+
+6. **Skipping heading level**  
+   Jumps from `<h1>` to `<h3>`, breaking the heading hierarchy.
+
+7. **Empty alt text that shouldn't be empty**  
+   Featured image has empty `alt` text when it should be descriptive.
+
+8. **Using div instead of semantic elements**  
+   Quote uses a `<div>` instead of a `<blockquote>`.
+
+9. **Table without headers**  
+   Comparison table lacks `<th>` elements and proper structure.
+
+10. **Button not keyboard accessible**  
+    Share button uses a `<div>` with `onclick` instead of a proper `<button>` element.
+
+11. **Form controls without labels**  
+    Email input lacks an associated `<label>` element.
+
+12. **Low contrast text**  
+    Sidebar "Latest Updates" section uses light gray text on a white background.
+
+13. **Poor alt text**  
+    Image has a generic `"image"` alt text that isn't descriptive.
+
+14. **Non-keyboard accessible custom controls**  
+    Tag cloud uses non-interactive `<span>` elements.
+
+15. **Autoplaying content without controls**  
+    Video autoplays with no controls to stop or pause it.
+
+16. **Using ARIA incorrectly**  
+    Uses `aria-labeledby` instead of the correct `aria-labelledby`.
+
+17. **Decorative image not marked as such**  
+    Security image has descriptive alt text, but it's purely decorative and should be marked with `alt=""`.
+
+18. **Hidden content that screen readers can't access**  
+    Article is hidden with `display: none`, making it inaccessible to all.
+
+19. **Insufficient focus indicator**  
+    Footer navigation links have no visible focus styles.
+
+20. **Icon links without accessible names**  
+    Social media icons lack text alternatives or `aria-labels`.
+
+</details>
 
 [Landing Page](https://jktmn.github.io/accessibility-example-pages/)
 
