@@ -1,549 +1,267 @@
 <!DOCTYPE html>
 <html>
+<!-- VIOLATION #1: Missing lang attribute on html element
+     This violates WCAG 3.1.1 (Language of Page) - Screen readers need the language 
+     attribute to properly pronounce content -->
 <head>
-    <!-- No language attribute in html tag to prevent screen readers from using correct pronunciation -->
-    <title>My Awesome Blog</title>
-    <!-- No meta viewport tag, making mobile viewing difficult -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JKTMN Insights Blog</title>
     <link rel="stylesheet" href="inaccessible.css">
 </head>
 <body>
-    <!-- Using div instead of semantic header -->
-    <div class="header">
-        <!-- Using styled span instead of h1 -->
-        <span class="site-title">My Awesome Blog</span>
-        <!-- Non-descriptive navigation with no structure -->
-        <div class="nav">
-            <!-- Non-descriptive link text -->
-            <span onclick="navigateTo('index.html')" class="nav-item">Home</span>
-            <span onclick="navigateTo('about.html')" class="nav-item">Click here</span>
-            <span onclick="navigateTo('blog.html')" class="nav-item">More</span>
-            <!-- Link with misleading or unclear purpose -->
-            <span onclick="navigateTo('contact.html')" class="nav-item">Info</span>
+    <!-- VIOLATION #2: Skip to content link missing
+         This violates WCAG 2.4.1 (Bypass Blocks) - Users should be able to skip 
+         navigation and get straight to main content -->
+    <header>
+        <div class="logo">
+            <!-- VIOLATION #3: Decorative image not marked as such
+                 This violates WCAG 1.1.1 (Non-text Content) - Decorative images 
+                 should have alt="" to be ignored by screen readers -->
+            <img src="https://picsum.photos/100/50?random=1" alt="Tech Insights Blog Logo">
+        </div>
+        
+        <!-- VIOLATION #4: Using div instead of nav for navigation
+             This violates WCAG 1.3.1 (Info and Relationships) - Semantic 
+             elements help assistive technologies understand the page structure -->
+        <div class="main-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Articles</a></li>
+                <!-- VIOLATION #5: Link with vague text
+                     This violates WCAG 2.4.4 (Link Purpose) - Link text should 
+                     describe where the link will take you -->
+                <li><a href="#">Click here</a></li>
+                <li><a href="#">About</a></li>
+                <!-- VIOLATION #6: Icon-only link with no accessible name
+                     This violates WCAG 2.4.4 (Link Purpose) - Links need descriptive text -->
+                <li><a href="#" class="search-icon">🔍</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <h1>Welcome to Tech Insights</h1>
+        <!-- VIOLATION #7: Poor color contrast
+             This violates WCAG 1.4.3 (Contrast Minimum) - Low contrast text 
+             is difficult to read for many users -->
+        <p class="low-contrast-text">Your source for the latest in technology trends and innovations</p>
+        
+        <!-- VIOLATION #8: Form input without label
+             This violates WCAG 3.3.2 (Labels or Instructions) - Form controls 
+             need labels so users know what information to provide -->
+        <div class="newsletter">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button>Subscribe</button>
         </div>
     </div>
 
-    <!-- Using div instead of main -->
-    <div class="content">
-        <!-- Non-semantic site banner -->
-        <div class="banner">
-            <!-- Autoplay video without controls -->
-            <video autoplay loop>
-                <source src="banner.mp4" type="video/mp4">
-                <!-- No alternative content for video -->
-            </video>
-            <!-- Text overlay with poor contrast -->
-            <div class="banner-text">Welcome to my blog!</div>
-        </div>
-
-        <!-- Search form with no labels or role -->
-        <div class="search-box">
-            <input type="text" placeholder="Search...">
-            <div class="search-btn" onclick="search()">GO</div>
-        </div>
-
-        <!-- Alert banner with no semantics -->
-        <div class="alert-banner" style="background-color: red; color: darkred;">
-            Important announcement - This site has been updated!
-        </div>
-
-        <!-- Blog categories with no structure -->
-        <div class="categories">
-            <div onclick="filterCategory('all')" class="category active">All</div>
-            <div onclick="filterCategory('tech')" class="category">Tech</div>
-            <div onclick="filterCategory('food')" class="category">Food</div>
-            <div onclick="filterCategory('travel')" class="category">Travel</div>
-        </div>
-
-        <!-- Featured section with complex layout -->
-        <div class="featured-posts">
-            <div class="feature-title">Featured Posts</div>
-            <div class="carousel">
-                <!-- Carousel with no controls or keyboard access -->
-                <div class="carousel-slide active">
-                    <img src="https://picsum.photos/200/300?random=1" alt="">
-                    <div class="slide-info">
-                        <p class="slide-title">Top 10 Destinations</p>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://picsum.photos/200/300?random=2" alt="">
-                    <div class="slide-info">
-                        <p class="slide-title">Best Gadgets 2025</p>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://picsum.photos/200/300?random=3" alt="">
-                    <div class="slide-info">
-                        <p class="slide-title">Cooking Tips</p>
-                    </div>
-                </div>
-                <!-- Next/prev buttons with no accessible names -->
-                <div class="prev" onclick="prevSlide()">◀</div>
-                <div class="next" onclick="nextSlide()">▶</div>
+    <main>
+        <article>
+            <!-- VIOLATION #9: Skipping heading level (h1 to h3)
+                 This violates WCAG 1.3.1 (Info and Relationships) - Headings 
+                 should follow a logical hierarchy -->
+            <h3>The Future of Artificial Intelligence</h3>
+            
+            <div class="article-meta">
+                <!-- VIOLATION #10: Time element without datetime attribute
+                     This violates WCAG 1.3.1 (Info and Relationships) - Machine-readable 
+                     dates help assistive technologies interpret content correctly -->
+                <time>April 5, 2025</time>
+                <span>by John Smith</span>
             </div>
-        </div>
-
-        <!-- Blog post grid with poor structure -->
-        <div class="blog-grid">
-            <!-- First blog post -->
-            <div class="blog-post">
-                <!-- Styling p tag to look like a heading instead of using h2 -->
-                <p class="post-title">My First Blog Post</p>
-                <!-- No indication of publish date for screen readers -->
-                <span class="date">04/08/2025</span>
-                
-                <!-- Image without alt text -->
-                <img src="https://picsum.photos/200/300?random=4" alt="image">
-                
-                <!-- Poor text structure without proper paragraphs -->
-                <div class="post-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at justo in libero convalescent vestibulum.
-                    <!-- Line break without semantic structure -->
-                    <br><br>
-                    <!-- Skip heading levels (h2 to h4) -->
-                    <div class="sub-heading">Key Points</div>
-                    
-                    <!-- Using div instead of ul/li for lists -->
-                    <div class="list">
-                        <div class="list-item">• First point</div>
-                        <div class="list-item">• Second point</div>
-                        <div class="list-item">• Third point</div>
-                    </div>
-                    
-                    <!-- Non-semantic quote styling -->
-                    <div class="quote">
-                        This is a quote that should be in a blockquote element.
-                    </div>
-                    
-                    <!-- Misused ARIA role -->
-                    <div role="button">
-                        This is not actually a button and has no keyboard event handlers
-                    </div>
-                    
-                    <!-- Flash animation that could cause seizures -->
-                    <div class="flashing-element">
-                        SPECIAL OFFER!!!
-                    </div>
-                </div>
-                
-                <!-- Non-descriptive link with no keyboard access -->
-                <div class="read-more" onclick="readMore(1)">
-                    Read more...
-                </div>
+            
+            <!-- VIOLATION #11: Image with unhelpful alt text
+                 This violates WCAG 1.1.1 (Non-text Content) - Alt text should 
+                 adequately describe the image content and purpose -->
+            <img src="https://picsum.photos/800/400?random=2" alt="image" class="featured-image">
+            
+            <p>Artificial intelligence continues to evolve at a rapid pace, transforming industries and everyday life. From healthcare diagnostics to autonomous vehicles, AI applications are becoming increasingly sophisticated.</p>
+            
+            <!-- VIOLATION #12: Misusing semantic elements (article inside article)
+                 This violates WCAG 1.3.1 (Info and Relationships) - Nested articles 
+                 without proper relationship causes confusion for screen readers -->
+            <article class="quote-box">
+                <p>"The development of full artificial intelligence could spell the end of the human race."</p>
+                <!-- VIOLATION #13: Missing heading where one is expected
+                     This violates WCAG 1.3.1 (Info and Relationships) - Quote attribution 
+                     should be marked with appropriate heading level -->
+                <span>- Stephen Hawking</span>
+            </article>
+            
+            <p>As machine learning algorithms become more powerful, ethical considerations around AI development have taken center stage in tech policy discussions.</p>
+            
+            <!-- VIOLATION #14: Heading inside a link
+                 This violates WCAG 1.3.1 (Info and Relationships) - Headings should 
+                 not be nested inside interactive elements -->
+            <a href="#" class="related-article">
+                <h4>Related: Machine Learning Advancements in 2025</h4>
+            </a>
+            
+            <h4>Key Developments</h4>
+            
+            <!-- VIOLATION #15: List using divs instead of ul/li
+                 This violates WCAG 1.3.1 (Info and Relationships) - Lists should use 
+                 proper list elements for screen reader navigation -->
+            <div class="fake-list">
+                <div class="list-item">Neural networks that can explain their decision-making process</div>
+                <div class="list-item">Integration of AI with quantum computing</div>
+                <div class="list-item">Advancements in natural language processing</div>
             </div>
-
-            <!-- Second blog post -->
-            <div class="blog-post">
-                <p class="post-title">Travel Adventures</p>
-                <span class="date">04/07/2025</span>
-                <img src="https://picsum.photos/200/300?random=5" alt="">
-                <div class="post-content">
-                    Nam vel erat at dolor faucibus eleifend. Nullam facilisis magna nec diam tincidunt lobortis vel at elit.
-                    <br><br>
-                    <div class="sub-heading">Highlights</div>
-                    <div class="list">
-                        <div class="list-item">• Beautiful scenery</div>
-                        <div class="list-item">• Local cuisine</div>
-                        <div class="list-item">• Hidden gems</div>
-                    </div>
-                </div>
-                <div class="read-more" onclick="readMore(2)">
-                    Read more...
-                </div>
-            </div>
-
-            <!-- Third blog post -->
-            <div class="blog-post">
-                <p class="post-title">Tech Review</p>
-                <span class="date">04/05/2025</span>
-                <img src="https://picsum.photos/200/300?random=7" alt="">
-                <div class="post-content">
-                    Praesent eget libero et urna consequat convallis vel a metus. In hac habitasse platea dictumst.
-                    <br><br>
-                    <!-- Misused table for layout -->
-                    <table cellspacing="0" cellpadding="5" border="0">
-                        <tr>
-                            <td style="width:50%;">Product Name:</td>
-                            <td>Super Gadget X</td>
-                        </tr>
-                        <tr>
-                            <td>Rating:</td>
-                            <td>
-                                <!-- Using images for rating with no alt -->
-                                <img src="https://picsum.photos/200/300?random=8" width="10" height="10">
-                                <img src="https://picsum.photos/200/300?random=9" width="10" height="10">
-                                <img src="https://picsum.photos/200/300?random=10" width="10" height="10">
-                                <img src="https://picsum.photos/200/300?random=11" width="10" height="10">
-                                <img src="https://picsum.photos/200/300?random=12" width="10" height="10">
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="read-more" onclick="readMore(3)">
-                    Read more...
-                </div>
-            </div>
-        </div>
+            
+            <!-- VIOLATION #16: Table without headers
+                 This violates WCAG 1.3.1 (Info and Relationships) - Tables need 
+                 proper headers for screen reader users to understand the data -->
+            <table class="data-table">
+                <tr>
+                    <td>2023</td>
+                    <td>45%</td>
+                    <td>$2.5B</td>
+                </tr>
+                <tr>
+                    <td>2024</td>
+                    <td>62%</td>
+                    <td>$3.8B</td>
+                </tr>
+                <tr>
+                    <td>2025</td>
+                    <td>78%</td>
+                    <td>$5.2B</td>
+                </tr>
+            </table>
+        </article>
         
-        <!-- Pagination without proper structure -->
-        <div class="pagination">
-            <!-- Images used as buttons without alt text -->
-            <img src="prev.png" onclick="prevPage()">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <img src="next.png" onclick="nextPage()">
-        </div>
+        <aside class="sidebar">
+            <!-- VIOLATION #17: Improper use of ARIA
+                 This violates WCAG 4.1.2 (Name, Role, Value) - Using aria-label on 
+                 non-interactive elements provides no benefit -->
+            <div aria-label="Popular posts section">
+                <h3>Popular Posts</h3>
+                <ul>
+                    <li><a href="#">Blockchain in 2025: Beyond Cryptocurrency</a></li>
+                    <li><a href="#">Understanding Quantum Computing</a></li>
+                    <li><a href="#">The Rise of Edge Computing</a></li>
+                </ul>
+            </div>
+            
+            <!-- VIOLATION #18: Complex interactive element not keyboard accessible
+                 This violates WCAG 2.1.1 (Keyboard) - All functionality must be 
+                 available via keyboard -->
+            <div class="rating-widget" onclick="ratePost(5)">
+                <span>Rate this post:</span>
+                <span class="stars">★★★★★</span>
+            </div>
+            
+            <!-- VIOLATION #19: Missing button role on interactive element
+                 This violates WCAG 4.1.2 (Name, Role, Value) - Interactive elements 
+                 should have appropriate roles -->
+            <div class="share-button" onclick="sharePost()">
+                Share this post
+            </div>
+            
+            <!-- VIOLATION #20: Autoplaying content without controls
+                 This violates WCAG 1.4.2 (Audio Control) - Users need a way to 
+                 stop or pause auto-playing content -->
+            <audio src="background-music.mp3" autoplay></audio>
+        </aside>
         
-        <!-- Sidebar with more components -->
-        <div class="sidebar">
-            <!-- About section -->
-            <div class="sidebar-section">
-                <div class="sidebar-title">About Me</div>
-                <img src="author.jpg" alt="image">
-                <div class="about-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec tristique neque.
-                </div>
-            </div>
+        <section class="comments">
+            <h3>Comments</h3>
             
-            <!-- Tag cloud with poor semantics -->
-            <div class="sidebar-section">
-                <div class="sidebar-title">Popular Tags</div>
-                <div class="tag-cloud">
-                    <span class="tag" style="font-size:7px;" onclick="filterTag('tech')">Tech</span>
-                    <span class="tag" style="font-size:12px;" onclick="filterTag('food')">Food</span>
-                    <span class="tag" style="font-size:9px;" onclick="filterTag('travel')">Travel</span>
-                    <span class="tag" style="font-size:14px;" onclick="filterTag('lifestyle')">Lifestyle</span>
-                    <span class="tag" style="font-size:6px;" onclick="filterTag('health')">Health</span>
-                    <span class="tag" style="font-size:11px;" onclick="filterTag('finance')">Finance</span>
-                </div>
-            </div>
-            
-            <!-- Popular posts with no proper structure -->
-            <div class="sidebar-section">
-                <div class="sidebar-title">Popular Posts</div>
-                <div class="popular-posts">
-                    <div class="popular-post">
-                        <img src="thumb1.jpg" width="30" height="30" alt="">
-                        <span class="popular-title" onclick="readMore(5)">Best Coffee Shops</span>
-                    </div>
-                    <div class="popular-post">
-                        <img src="thumb2.jpg" width="30" height="30" alt="">
-                        <span class="popular-title" onclick="readMore(6)">Home Office Setup</span>
-                    </div>
-                    <div class="popular-post">
-                        <img src="thumb3.jpg" width="30" height="30" alt="">
-                        <span class="popular-title" onclick="readMore(7)">Morning Routines</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Social media links with icons only -->
-            <div class="sidebar-section">
-                <div class="sidebar-title">Follow Me</div>
-                <div class="social-icons">
-                    <img src="facebook.png" width="20" height="20" alt="" onclick="socialLink('facebook')">
-                    <img src="twitter.png" width="20" height="20" alt="" onclick="socialLink('twitter')">
-                    <img src="instagram.png" width="20" height="20" alt="" onclick="socialLink('instagram')">
-                    <img src="linkedin.png" width="20" height="20" alt="" onclick="socialLink('linkedin')">
-                </div>
-            </div>
-            
-            <!-- Poll with inaccessible inputs -->
-            <div class="sidebar-section">
-                <div class="sidebar-title">Quick Poll</div>
-                <div class="poll-question">Favorite Season?</div>
-                <div class="poll-options">
-                    <!-- Custom radio buttons without proper input elements -->
-                    <div class="poll-option" onclick="selectOption('spring')">
-                        <div class="radio"></div>
-                        <span>Spring</span>
-                    </div>
-                    <div class="poll-option" onclick="selectOption('summer')">
-                        <div class="radio"></div>
-                        <span>Summer</span>
-                    </div>
-                    <div class="poll-option" onclick="selectOption('fall')">
-                        <div class="radio"></div>
-                        <span>Fall</span>
-                    </div>
-                    <div class="poll-option" onclick="selectOption('winter')">
-                        <div class="radio"></div>
-                        <span>Winter</span>
-                    </div>
-                </div>
-                <div class="poll-submit" onclick="submitPoll()">Vote</div>
-            </div>
-        </div>
-        
-        <!-- Newsletter signup with poor labels -->
-        <div class="subscription">
-            <!-- Form elements without labels -->
-            <p class="form-title">Subscribe to our newsletter</p>
-            <div class="form-row">
-                <input type="text" placeholder="Name">
-            </div>
-            <div class="form-row">
-                <input type="text" placeholder="Email">
-            </div>
-            <div class="form-row">
-                <!-- Custom checkbox with no accessible implementation -->
-                <div class="custom-checkbox" onclick="toggleCheck()"></div>
-                <span>I agree to receive marketing emails</span>
-            </div>
-            <!-- Button implemented as div -->
-            <div class="submit-btn" onclick="subscribe()">SUBMIT</div>
-        </div>
-        
-        <!-- Comments section with inaccessible structure -->
-        <div class="comments-section">
-            <div class="comments-title">Comments (3)</div>
-            
-            <div class="comment">
-                <img src="avatar1.jpg" width="40" height="40" alt="">
-                <div class="comment-content">
-                    <div class="commenter">User123</div>
-                    <div class="comment-date">April 7, 2025</div>
-                    <div class="comment-text">Great article! Thanks for sharing these insights.</div>
-                    <div class="comment-actions">
-                        <span onclick="likeComment(1)" class="action">Like</span>
-                        <span onclick="replyComment(1)" class="action">Reply</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="comment">
-                <img src="avatar2.jpg" width="40" height="40" alt="">
-                <div class="comment-content">
-                    <div class="commenter">BlogFan</div>
-                    <div class="comment-date">April 6, 2025</div>
-                    <div class="comment-text">I disagree with point two. In my experience...</div>
-                    <div class="comment-actions">
-                        <span onclick="likeComment(2)" class="action">Like</span>
-                        <span onclick="replyComment(2)" class="action">Reply</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="comment">
-                <img src="avatar3.jpg" width="40" height="40" alt="">
-                <div class="comment-content">
-                    <div class="commenter">TechGuru</div>
-                    <div class="comment-date">April 5, 2025</div>
-                    <div class="comment-text">Have you considered the implications of this approach?</div>
-                    <div class="comment-actions">
-                        <span onclick="likeComment(3)" class="action">Like</span>
-                        <span onclick="replyComment(3)" class="action">Reply</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Comment form with poor accessibility -->
-            <div class="comment-form">
-                <div class="form-title">Leave a comment</div>
+            <!-- VIOLATION #21: Form fieldset without legend
+                 This violates WCAG 1.3.1 (Info and Relationships) - Fieldsets should 
+                 have legends to describe the group of form controls -->
+            <fieldset class="comment-form">
                 <div class="form-row">
-                    <input type="text" placeholder="Name">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name">
                 </div>
+                
+                <!-- VIOLATION #22: Label not associated with form control
+                     This violates WCAG 3.3.2 (Labels or Instructions) - Labels must be 
+                     properly associated with their controls -->
                 <div class="form-row">
-                    <input type="text" placeholder="Email">
+                    <label>Email:</label>
+                    <input type="email" id="email-input">
                 </div>
+                
                 <div class="form-row">
-                    <!-- Textarea with no label -->
-                    <textarea placeholder="Your comment..."></textarea>
+                    <!-- VIOLATION #23: Missing label for form control
+                         This violates WCAG 3.3.2 (Labels or Instructions) - All form 
+                         controls need accessible labels -->
+                    <textarea placeholder="Enter your comment here"></textarea>
                 </div>
-                <!-- CAPTCHA with no accessible alternative -->
-                <div class="captcha">
-                    <img src="captcha.jpg" alt="captcha">
-                    <input type="text" placeholder="Enter text above">
+                
+                <!-- VIOLATION #24: Color alone used to convey meaning
+                     This violates WCAG 1.4.1 (Use of Color) - Color shouldn't be the 
+                     only way to convey information -->
+                <p class="required-field-note" style="color: red;">Red fields are required</p>
+                
+                <!-- VIOLATION #25: Button with no accessible name
+                     This violates WCAG 4.1.2 (Name, Role, Value) - Buttons need an 
+                     accessible name -->
+                <button></button>
+            </fieldset>
+            
+            <!-- VIOLATION #26: Keyboard trap
+                 This violates WCAG 2.1.2 (No Keyboard Trap) - Users must be able to 
+                 navigate away from elements using keyboard -->
+            <div class="captcha" tabindex="0" onkeydown="return false;" onclick="verifyCaptcha()">
+                Click here to verify you're human
+            </div>
+        </section>
+        
+        <section class="related-posts">
+            <!-- VIOLATION #27: Using aria-hidden without hiding visually
+                 This violates WCAG 4.1.2 (Name, Role, Value) - Misuse of ARIA can 
+                 cause confusion for screen reader users -->
+            <h3 aria-hidden="true">Related Posts</h3>
+            
+            <div class="posts-grid">
+                <div class="post-card">
+                    <!-- VIOLATION #28: Image with missing alt attribute
+                         This violates WCAG 1.1.1 (Non-text Content) - Images must have 
+                         alt attributes -->
+                    <img src="https://picsum.photos/300/200?random=3" class="post-image">
+                    <h4>The Impact of 5G Technology</h4>
+                    <p>Exploring how 5G is changing connectivity worldwide.</p>
+                    <!-- VIOLATION #29: Link with title but no accessible text
+                         This violates WCAG 2.4.4 (Link Purpose) - Links must have 
+                         accessible text content -->
+                    <a href="#" title="Read more about 5G Technology"></a>
                 </div>
-                <div class="submit-btn" onclick="submitComment()">POST COMMENT</div>
             </div>
-        </div>
-    </div>
-    
-    <!-- Related posts with carousel that can't be navigated -->
-    <div class="related-posts">
-        <div class="related-title">You May Also Like</div>
-        <div class="related-carousel">
-            <div class="related-item">
-                <img src="related1.jpg" alt="">
-                <div class="related-info">Best Summer Recipes</div>
-            </div>
-            <div class="related-item">
-                <img src="related2.jpg" alt="">
-                <div class="related-info">Travel on a Budget</div>
-            </div>
-            <div class="related-item">
-                <img src="related3.jpg" alt="">
-                <div class="related-info">Home Decor Tips</div>
-            </div>
-            <div class="related-item">
-                <img src="related4.jpg" alt="">
-                <div class="related-info">Career Advice</div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Pop-up with keyboard trap -->
-    <div class="popup" id="newsletter-popup">
-        <div class="popup-content">
-            <div class="popup-title">JOIN OUR MAILING LIST</div>
-            <div class="popup-text">Subscribe now for exclusive content and updates!</div>
-            <input type="text" placeholder="Enter your email">
-            <div class="popup-btn" onclick="subscribePopup()">SUBSCRIBE</div>
-            <div class="popup-close" onclick="closePopup()">X</div>
-        </div>
-    </div>
-    
-    <!-- Using div instead of footer -->
-    <div class="footer">
-        <!-- Poor link structure -->
-        <div class="footer-links">
-            <span onclick="navigateTo('privacy.html')">Privacy</span> |
-            <span onclick="navigateTo('terms.html')">Terms</span> |
-            <span onclick="navigateTo('contact.html')">Contact</span>
-        </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- VIOLATION #30: Positive tabindex value
+             This violates WCAG 2.4.3 (Focus Order) - Positive tabindex values 
+             disrupt the natural tab order of the page -->
+        <nav tabindex="5">
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </nav>
         
-        <!-- Site map without proper structure -->
-        <div class="footer-columns">
-            <div class="footer-column">
-                <div class="footer-heading">Categories</div>
-                <span onclick="navigateTo('tech.html')">Technology</span>
-                <span onclick="navigateTo('food.html')">Food</span>
-                <span onclick="navigateTo('travel.html')">Travel</span>
-                <span onclick="navigateTo('lifestyle.html')">Lifestyle</span>
-            </div>
-            <div class="footer-column">
-                <div class="footer-heading">About</div>
-                <span onclick="navigateTo('about.html')">Our Story</span>
-                <span onclick="navigateTo('team.html')">Team</span>
-                <span onclick="navigateTo('careers.html')">Careers</span>
-                <span onclick="navigateTo('press.html')">Press</span>
-            </div>
-            <div class="footer-column">
-                <div class="footer-heading">Support</div>
-                <span onclick="navigateTo('faq.html')">FAQ</span>
-                <span onclick="navigateTo('help.html')">Help Center</span>
-                <span onclick="navigateTo('contact.html')">Contact Us</span>
-                <span onclick="navigateTo('feedback.html')">Feedback</span>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <!-- Using entity references inconsistently -->
-            Copyright &copy; 2025 - My Awesome Blog - All rights reserved
-        </div>
-    </div>
-    
-    <!-- Cookie notice with no accessible way to dismiss -->
-    <div class="cookie-notice">
-        <div class="cookie-text">This site uses cookies. By continuing to browse, you agree to our use of cookies.</div>
-        <div class="cookie-btn" onclick="acceptCookies()">OK</div>
-    </div>
-    
+        <p>&copy; 2025 JKTMN Insights Blog. All rights reserved.</p>
+    </footer>
+
     <script>
-        // JavaScript that overrides default behavior
-        function navigateTo(url) {
-            window.location.href = url;
+        function sharePost() {
+            alert("Sharing functionality would go here");
         }
         
-        function readMore(id) {
-            alert("You clicked read more on post " + id + "!");
+        function ratePost(rating) {
+            alert("Thanks for rating: " + rating + " stars");
         }
         
-        function prevPage() {
-            alert("Previous page");
+        function verifyCaptcha() {
+            alert("You've been verified as human");
         }
-        
-        function nextPage() {
-            alert("Next page");
-        }
-        
-        function subscribe() {
-            alert("Subscribed!");
-        }
-        
-        function search() {
-            alert("Search functionality!");
-        }
-        
-        function prevSlide() {
-            alert("Previous slide");
-        }
-        
-        function nextSlide() {
-            alert("Next slide");
-        }
-        
-        function filterCategory(category) {
-            alert("Filtering by: " + category);
-        }
-        
-        function filterTag(tag) {
-            alert("Filtering by tag: " + tag);
-        }
-        
-        function socialLink(platform) {
-            alert("Opening " + platform);
-        }
-        
-        function selectOption(option) {
-            alert("Selected: " + option);
-        }
-        
-        function submitPoll() {
-            alert("Poll submitted!");
-        }
-        
-        function toggleCheck() {
-            // Toggle custom checkbox with no keyboard access
-        }
-        
-        function likeComment(id) {
-            alert("Liked comment " + id);
-        }
-        
-        function replyComment(id) {
-            alert("Reply to comment " + id);
-        }
-        
-        function submitComment() {
-            alert("Comment submitted!");
-        }
-        
-        function subscribePopup() {
-            alert("Subscribed from popup!");
-        }
-        
-        function closePopup() {
-            document.getElementById('newsletter-popup').style.display = 'none';
-        }
-        
-        function acceptCookies() {
-            document.querySelector('.cookie-notice').style.display = 'none';
-        }
-        
-        // Show popup after delay
-        setTimeout(function() {
-            document.getElementById('newsletter-popup').style.display = 'block';
-        }, 3000);
-        
-        // Disable right-click context menu
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-        
-        // Disable keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Tab') {
-                e.preventDefault();
-            }
-        });
-        
-        // Auto-scroll feature that can't be stopped
-        setInterval(function() {
-            window.scrollBy(0, 1);
-        }, 100);
     </script>
 </body>
 </html>
