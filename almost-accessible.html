@@ -2,186 +2,200 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport meta tag ensures proper scaling on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechInsight Blog - Web Accessibility Fundamentals</title>
+    <title>Tech Insights Blog</title>
     <link rel="stylesheet" href="almost-accessible.css">
 </head>
 <body>
-    <!-- Skip link helps keyboard users bypass navigation -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- Semantic header element contains the site identity and main navigation -->
+    <!-- Semantic header with site title and navigation -->
     <header>
-        <!-- Site title using appropriate h1 heading -->
-        <h1>TechInsight Blog</h1>
+        <div class="logo">
+            <!-- ACCESSIBILITY ISSUE #1: Missing alt text -->
+            <img src="https://picsum.photos/200/300?random=1">
+            <h1>Tech Insights Blog</h1>
+        </div>
         
-        <!-- Nav element clearly identifies navigation section for screen readers -->
-        <nav aria-label="Main navigation">
-            <!-- Button only appears on mobile, hidden for large screens -->
-            <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
-                Menu
-                <span class="visually-hidden">Toggle navigation menu</span>
-            </button>
-            
-            <!-- Navigation with descriptive link text -->
-            <ul id="main-menu">
-                <li><a href="#" aria-current="page">Home</a></li>
-                <li><a href="articles.html">Articles</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
+        <!-- ACCESSIBILITY ISSUE #2: No skip navigation link -->
+        
+        <!-- ACCESSIBILITY ISSUE #3: Navigation not marked as navigation landmark -->
+        <div class="main-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Articles</a></li>
+                <!-- ACCESSIBILITY ISSUE #4: Non-descriptive link text -->
+                <li><a href="#">Click here</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
-        </nav>
+        </div>
+        
+        <!-- ACCESSIBILITY ISSUE #5: Color alone used to convey information -->
+        <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span class="status-text">Site Status</span>
+        </div>
     </header>
 
-    <!-- Main content area with id for skip link target -->
-    <main id="main-content">
-        <!-- Article represents a self-contained composition -->
-        <article>
-            <header>
-                <!-- Clear heading hierarchy with h2 for article title -->
-                <h2>Web Accessibility Fundamentals: Creating Inclusive Digital Experiences</h2>
+    <main>
+        <section class="featured-post">
+            <article>
+                <!-- ACCESSIBILITY ISSUE #6: Skipping heading level (h1 to h3) -->
+                <h3>The Future of Web Development: AI-Powered Experiences</h3>
+                <div class="post-meta">
+                    <p>Posted on <time datetime="2025-04-08">April 8, 2025</time> by Jane Doe</p>
+                </div>
                 
-                <!-- Time element adds semantic meaning to dates -->
-                <p class="meta">Published on: <time datetime="2025-04-08">April 8, 2025</time> by <a href="author.html">Jamie Smith</a></p>
-            </header>
-
-            <!-- Figure element for image with caption -->
-            <figure>
-                <!-- Meaningful alt text describes image content -->
-                <img src="https://picsum.photos/200/300?random=1" alt="Illustration showing various accessibility tools including screen readers, keyboards, and mobile devices accessing a website" width="800" height="400">
-                <figcaption>Various assistive technologies help users with disabilities access web content</figcaption>
-            </figure>
-
-            <p>Web accessibility ensures that people with disabilities can perceive, understand, navigate, and interact with websites and tools. When websites are properly designed and coded, users with disabilities can access information equally to those without disabilities.</p>
-
-            <h3>Why Accessibility Matters</h3>
-            
-            <p>Creating accessible websites is not just a legal requirement in many countries—it's also good business practice. Accessible websites reach a wider audience, improve SEO, and often provide a better user experience for everyone, not just those with disabilities.</p>
-            
-            <p>The Web Content Accessibility Guidelines (WCAG) provide standards for making content accessible. Let's explore some fundamental principles:</p>
-
-            <h3>Key WCAG Principles</h3>
-            
-            <!-- Semantic list structure -->
-            <ul>
-                <li><strong>Perceivable</strong>: Information must be presentable to users in ways they can perceive. This means providing text alternatives for non-text content and creating content that can be presented in different ways.</li>
-                <li><strong>Operable</strong>: User interface components and navigation must be operable. This includes making all functionality available from a keyboard and giving users enough time to read and use content.</li>
-                <li><strong>Understandable</strong>: Information and the operation of the user interface must be understandable. Content should be readable and interfaces should operate in predictable ways.</li>
-                <li><strong>Robust</strong>: Content must be robust enough to be interpreted reliably by a variety of user agents, including assistive technologies. This means using standards-compliant code that works with current and future technologies.</li>
-            </ul>
-
-            <h3>Simple Accessibility Techniques</h3>
-            
-            <p>Here are some basic techniques to improve accessibility:</p>
-            
-            <!-- Using semantic HTML for structure -->
-            <ol>
-                <li>Use semantic HTML elements like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code></li>
-                <li>Provide meaningful alt text for images</li>
-                <li>Ensure sufficient color contrast</li>
-                <li>Make sure forms have proper labels</li>
-                <li>Allow keyboard navigation and visible focus states</li>
-                <li>Create a logical heading structure</li>
-            </ol>
-
-            <h3>Testing Your Site</h3>
-            
-            <p>Testing is crucial to ensure accessibility. Methods include:</p>
-            
-            <!-- Descriptive link text - explains where the link goes -->
-            <ul>
-                <li>Keyboard testing: Navigate your site using only the keyboard</li>
-                <li>Screen reader testing: Listen to how your content is read aloud</li>
-                <li>Automated tools: Use <a href="https://wave.webaim.org/">WebAIM's WAVE tool</a> or other accessibility checkers</li>
-                <li>User testing: Get feedback from people with disabilities</li>
-            </ul>
-
-            <blockquote>
-                <p>"The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect."</p>
-                <cite>Tim Berners-Lee, W3C Director and inventor of the World Wide Web</cite>
-            </blockquote>
-
-            <h3>Conclusion</h3>
-            
-            <p>Web accessibility is not a one-time effort but an ongoing process. By following WCAG standards and understanding the diverse needs of users, developers can create digital experiences that truly welcome everyone.</p>
-
-            <!-- Tag section for additional semantic grouping -->
-            <section class="tags">
-                <h4>Tags:</h4>
-                <ul class="tag-list">
-                    <li><a href="tag-accessibility.html">Accessibility</a></li>
-                    <li><a href="tag-web-development.html">Web Development</a></li>
-                    <li><a href="tag-inclusive-design.html">Inclusive Design</a></li>
-                    <li><a href="tag-wcag.html">WCAG</a></li>
+                <!-- ACCESSIBILITY ISSUE #7: Empty alt text that shouldn't be empty -->
+                <img src="https://picsum.photos/800/400?random=2" alt="" class="featured-image">
+                
+                <div class="post-content">
+                    <p>Web development has come a long way since the early days of static HTML pages. Today, we're witnessing the rise of AI-powered web experiences that adapt to user behavior and preferences in real-time.</p>
+                    
+                    <h4>The Rise of AI in Frontend Development</h4>
+                    <p>Artificial intelligence is revolutionizing how we build and interact with websites. From personalized content delivery to smart user interfaces, AI technologies are making websites more intuitive and responsive than ever before.</p>
+                    
+                    <!-- ACCESSIBILITY ISSUE #8: Using <div> instead of semantic elements -->
+                    <div class="quote">
+                        AI isn't just changing what websites can do—it's fundamentally shifting how developers approach the creation process.
+                    </div>
+                    
+                    <h4>Key Technologies Driving This Transformation</h4>
+                    <!-- ACCESSIBILITY ISSUE #9: Table without headers -->
+                    <table class="tech-comparison">
+                        <tr>
+                            <td>Machine Learning Models</td>
+                            <td>High</td>
+                            <td>Content personalization, behavior prediction</td>
+                        </tr>
+                        <tr>
+                            <td>Natural Language Processing</td>
+                            <td>Medium</td>
+                            <td>Chatbots, voice interfaces</td>
+                        </tr>
+                        <tr>
+                            <td>Computer Vision</td>
+                            <td>Growing</td>
+                            <td>Image recognition, visual search</td>
+                        </tr>
+                    </table>
+                    
+                    <p>Developers are increasingly incorporating these technologies to create websites that not only look good but actually understand and adapt to user needs.</p>
+                    
+                    <h4>Accessibility Considerations</h4>
+                    <p>While AI offers exciting possibilities, developers must ensure these advanced features remain accessible to all users, including those with disabilities. This means testing with assistive technologies and following established accessibility guidelines.</p>
+                    
+                    <!-- ACCESSIBILITY ISSUE #10: Button not keyboard accessible -->
+                    <div class="share-button" onclick="shareArticle()">
+                        Share This Article
+                    </div>
+                    
+                    <!-- ACCESSIBILITY ISSUE #11: Form controls without labels -->
+                    <div class="subscribe-form">
+                        <h4>Subscribe to Our Newsletter</h4>
+                        <form>
+                            <input type="email" placeholder="Enter your email">
+                            <input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+                </div>
+            </article>
+        </section>
+        
+        <aside class="sidebar">
+            <!-- ACCESSIBILITY ISSUE #12: Low contrast text -->
+            <div class="low-contrast-section">
+                <h4>Latest Updates</h4>
+                <ul>
+                    <li><a href="#">New CSS Framework Released</a></li>
+                    <li><a href="#">TypeScript 5.5: What's New</a></li>
+                    <li><a href="#">Web Assembly: The Future is Here</a></li>
                 </ul>
-            </section>
-        </article>
-
-        <!-- Related articles section -->
-        <section class="related-posts">
-            <h3>Related Articles</h3>
-            <ul>
-                <li>
-                    <a href="color-contrast.html">Understanding Color Contrast for Web Accessibility</a>
-                </li>
-                <li>
-                    <a href="keyboard-navigation.html">Building Keyboard-Friendly Websites</a>
-                </li>
-                <li>
-                    <a href="screen-readers.html">How Screen Readers Interpret Your Website</a>
-                </li>
-            </ul>
+            </div>
+            
+            <!-- ACCESSIBILITY ISSUE #13: Image with poor alt text -->
+            <img src="https://picsum.photos/200/300?random=3" alt="image" class="sidebar-image">
+            
+            <div class="popular-tags">
+                <h4>Popular Tags</h4>
+                <!-- ACCESSIBILITY ISSUE #14: Non-keyboard accessible custom controls -->
+                <div class="tag-cloud">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">Accessibility</span>
+                    <span class="tag">React</span>
+                    <span class="tag">AI</span>
+                </div>
+            </div>
+            
+            <!-- ACCESSIBILITY ISSUE #15: Autoplaying content without controls -->
+            <div class="video-section">
+                <h4>Featured Video</h4>
+                <video autoplay loop>
+                    <source src="sample-video.mp4" type="video/mp4">
+                </video>
+            </div>
+        </aside>
+        
+        <section class="more-articles">
+            <h3>More Articles</h3>
+            <div class="article-grid">
+                <!-- ACCESSIBILITY ISSUE #16: Using aria incorrectly -->
+                <article aria-labeledby="article-title-1">
+                    <h4 id="article-title-1">Responsive Design in 2025</h4>
+                    <img src="https://picsum.photos/200/300?random=4" alt="A designer working on responsive layouts">
+                    <p>Exploring the latest techniques for building websites that work beautifully across all devices.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </article>
+                
+                <article>
+                    <h4>Security Best Practices</h4>
+                    <!-- ACCESSIBILITY ISSUE #17: Decorative image not marked as such -->
+                    <img src="https://picsum.photos/200/300?random=5" alt="Computer security illustration with locks and shields">
+                    <p>Keep your web applications secure with these essential security practices for modern developers.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </article>
+                
+                <!-- ACCESSIBILITY ISSUE #18: Hidden content that screen readers can't access -->
+                <article class="visually-hidden">
+                    <h4>Performance Optimization Tips</h4>
+                    <img src="https://picsum.photos/200/300?random=6" alt="A speedometer showing website performance">
+                    <p>Learn how to make your websites lightning fast with these performance optimization strategies.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </article>
+            </div>
         </section>
     </main>
 
-    <!-- Semantic footer contains supplementary information -->
     <footer>
-        <div class="footer-content">
-            <section class="footer-about">
-                <h3>About TechInsight Blog</h3>
-                <p>TechInsight provides practical articles on web development, accessibility, and digital technology.</p>
-            </section>
-            
-            <nav aria-label="Footer navigation">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="sitemap.html">Sitemap</a></li>
-                </ul>
-            </nav>
-            
-            <section class="footer-contact">
-                <h3>Contact Us</h3>
-                <address>
-                    Email: <a href="mailto:JKTMN@JKTMN.com">JKTMN@JKTMN.com</a><br>
-                    Twitter: <a href="https://twitter.com/null">@null</a>
-                </address>
-            </section>
+        <!-- ACCESSIBILITY ISSUE #19: Insufficient focus indicator -->
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </nav>
+        
+        <div class="social-links">
+            <h4>Follow Us</h4>
+            <!-- ACCESSIBILITY ISSUE #20: Icon links without accessible names -->
+            <a href="#" class="social-icon twitter"></a>
+            <a href="#" class="social-icon facebook"></a>
+            <a href="#" class="social-icon linkedin"></a>
+            <a href="#" class="social-icon github"></a>
         </div>
         
-        <p class="copyright">&copy; 2025 JKTMn Blog. All rights reserved.</p>
+        <div class="copyright">
+            <p>&copy; 2025 Tech Insights Blog. All rights reserved.</p>
+        </div>
     </footer>
-
-    <!-- Minimal JavaScript just for mobile menu toggle -->
+    
     <script>
-        // Wait for the DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mainMenu = document.getElementById('main-menu');
-            
-            // Only execute if both elements exist
-            if (menuToggle && mainMenu) {
-                menuToggle.addEventListener('click', function() {
-                    // Toggle menu visibility
-                    const expanded = mainMenu.classList.toggle('visible');
-                    
-                    // Update aria-expanded state
-                    menuToggle.setAttribute('aria-expanded', expanded);
-                });
-            }
-        });
+        function shareArticle() {
+            alert('Article shared!');
+        }
     </script>
 </body>
 </html>
